@@ -23,4 +23,7 @@ def getImagemId():
 
 
 ids, faces = getImagemId()
-print(faces)
+#print(faces)
+
+print("treinando...")
+eigenface.train(faces, ids)
