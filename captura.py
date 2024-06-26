@@ -13,7 +13,7 @@ print("Capturando as faces...")
 while True:
     conectado, imagem = camera.read()
     imagemCinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
-    print(np.average(imagemCinza))
+    #print(np.average(imagemCinza))
     facesDetectadas = classificador.detectMultiScale(imagemCinza,
                                                      scaleFactor=1.5,
                                                      minSize=(100, 100))
@@ -35,8 +35,9 @@ while True:
                    amostra += 1
 
     cv2.imshow("Face", imagem)
+    cv2.waitKey(1)
 
-    if amostra > numeroAmostras:
+    if (amostra >= numeroAmostras + 1):
         break
 
 print("Faces capturadas com sucesso")
