@@ -27,3 +27,12 @@ ids, faces = getImagemId()
 
 print("treinando...")
 eigenface.train(faces, ids)
+eigenface.write('classificaforEigen.yml')
+
+fisherface.train(faces, ids)
+fisherface.write('classificadorFisher.yml')
+
+lbph.train(faces, ids)
+lbph.write('classificadorLBPH.yml')
+
+print("Treinamento realizado")
