@@ -28,18 +28,22 @@ while (True):
 
         for (ox, oy, ol, oa) in olhosDetectados:
             cv2.rectangle(regiao, (ox, oy), (ox + ol, oy + oa), (0, 255, 0), 2)
+            
+        if np.average(imagemCinza) > 110:
+                imagemFace = cv2.resize(imagemCinza[y:y + a, x:x + l], (largura, altura))
+                cv2.imwrite(f"fotos/pessoa.{id}.{amostra}.jpg", imagemFace)
+                print(f"Foto {amostra} capturada com sucesso")
+                amostra += 1
+ 
+    cv2.imshow("Face", imagem)               
+    
+                
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break   
 
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-               if np.average(imagemCinza) > 110:
-                   imagemFace = cv2.resize(imagemCinza[y:y + a, x:x + l], (largura, altura))
-                   cv2.imwrite(f"fotos/pessoa.{id}.{amostra}.jpg", imagemFace)
-                   print(f"Foto {amostra} capturada com sucesso")
-                   amostra += 1
+    #cv2.waitKey(1)
 
-    cv2.imshow("Face", imagem)
-    cv2.waitKey(1)
-
-    if (amostra >= numeroAmostras + 1):
+    if (amostra > numeroAmostras):
         break
 
 print("Faces capturadas com sucesso")
