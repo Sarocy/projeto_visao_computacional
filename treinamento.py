@@ -27,7 +27,7 @@ ids, faces = getImagemId()
 
 print("treinando...")
 eigenface.train(faces, ids)
-eigenface.write('classificaforEigen.yml')
+eigenface.write('classificadorEigen.yml')
 
 fisherface.train(faces, ids)
 fisherface.write('classificadorFisher.yml')
